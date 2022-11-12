@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Master\MasterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::get('/test', function () {
-    return view('test');
-})->middleware(['auth'])->name('test');
+Route::get('/master', function () {
+    return view('master.master');
+})->middleware(['auth'])->name('master');
+Route::get('/master/store', [MasterController::class, 'store'])->middleware('auth');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

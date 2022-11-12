@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\InsertMaster;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -35,7 +36,12 @@ class MasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $start_time = microtime(true);
+        $job = new InsertMaster();
+        $this->dispatch($job);
+        $end_time = microtime(true);
+        $diff_time = sprintf('%0.2f', $end_time - $start_time);
+        return redirect('master')->with('success', "Data berhasil di masukan dengan waktu input". $diff_time . "detik");
     }
 
     /**
