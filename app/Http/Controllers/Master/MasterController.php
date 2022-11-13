@@ -41,7 +41,7 @@ class MasterController extends Controller
         $this->dispatch($job);
         $end_time = microtime(true);
         $diff_time = sprintf('%0.2f', $end_time - $start_time);
-        return redirect('master')->with('success', "Data berhasil di masukan dengan waktu input". $diff_time . "detik");
+        return redirect('master')->with('success', "Data berhasil di masukan dengan waktu input ". $diff_time . "detik");
     }
 
     /**
