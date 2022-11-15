@@ -34,14 +34,19 @@ class MasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
+    {
+        dd($request->all());
+    }
+    public function store_dummy(Request $request)
     {
         $start_time = microtime(true);
         $job = new InsertMaster();
         $this->dispatch($job);
         $end_time = microtime(true);
         $diff_time = sprintf('%0.2f', $end_time - $start_time);
-        return redirect('master')->with('success', "Data berhasil di masukan dengan waktu input ". $diff_time . "detik");
+        return redirect('master')->with('success', "Data berhasil di masukan dengan waktu input " . $diff_time . "detik");
     }
 
     /**

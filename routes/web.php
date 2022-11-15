@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
 Route::get('/master', function () {
     return view('master.master');
 })->middleware(['auth'])->name('master');
-Route::get('/master/store', [MasterController::class, 'store'])->middleware('auth');
+Route::get('/master/create', function () {
+    return view('master.create');
+})->middleware(['auth'])->name('master_create');
+Route::get('/master/store', [MasterController::class, 'store_dummy'])->middleware('auth');
+Route::post('/master/store', [MasterController::class, 'store'])->middleware('auth');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
